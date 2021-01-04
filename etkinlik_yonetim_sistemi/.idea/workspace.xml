@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a0ba2ba4-d233-471b-9b37-52bf94d27c19" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1axZsMF3CFa4q4TTspoi7zKKmah" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ACER\Desktop\2019_bahar\bitenler\özlem_sevil_+_+_+_+_+\etkinlik_yonetim_sistemi\templates" />
+      <recent name="C:\Users\ACER\Desktop\2019_bahar\bitenler\özlem_sevil_+_+_+_+_+\etkinlik_yonetim_sistemi\static\yuklemeler" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.app">
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="etkinlik_yonetim_sistemi" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="etkinlik_yonetim_sistemi" type="PythonConfigurationType" factoryName="Python">
+      <module name="etkinlik_yonetim_sistemi" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/orm_db.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.app" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a0ba2ba4-d233-471b-9b37-52bf94d27c19" name="Default Changelist" comment="" />
+      <created>1587679411281</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587679411281</updated>
+      <workItem from="1587679414550" duration="4670000" />
+      <workItem from="1587716327502" duration="152000" />
+      <workItem from="1587719577282" duration="1820000" />
+      <workItem from="1587734152101" duration="188000" />
+      <workItem from="1587900128098" duration="3069000" />
+      <workItem from="1587907068817" duration="1191000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="790" y="318" key="#Notifications" timestamp="1587907316037">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="790" y="318" key="#Notifications/1920.173.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1587907316037" />
+    <state x="669" y="115" key="#app" timestamp="1587679445367">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="669" y="115" key="#app/1920.173.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1587679445367" />
+    <state width="1853" height="252" key="GridCell.Tab.0.bottom" timestamp="1587908260438">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1853" height="252" key="GridCell.Tab.0.bottom/1920.173.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1587908260438" />
+    <state width="1853" height="252" key="GridCell.Tab.0.center" timestamp="1587908260437">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1853" height="252" key="GridCell.Tab.0.center/1920.173.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1587908260437" />
+    <state width="1853" height="252" key="GridCell.Tab.0.left" timestamp="1587908260436">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1853" height="252" key="GridCell.Tab.0.left/1920.173.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1587908260436" />
+    <state width="1853" height="252" key="GridCell.Tab.0.right" timestamp="1587908260437">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1853" height="252" key="GridCell.Tab.0.right/1920.173.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1587908260437" />
+    <state x="2008" y="260" key="SettingsEditor" timestamp="1587900218454">
+      <screen x="1920" y="173" width="1536" height="832" />
+    </state>
+    <state x="2008" y="260" key="SettingsEditor/1920.173.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1587900218454" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/etkinlik_yonetim_sistemi$app.coverage" NAME="app Coverage Results" MODIFIED="1587908049505" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

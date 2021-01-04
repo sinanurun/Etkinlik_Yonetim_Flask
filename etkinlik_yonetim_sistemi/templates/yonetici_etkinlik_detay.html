@@ -1,0 +1,98 @@
+{% extends "yonetici.html" %}
+
+{% block sayfa_baslik %}
+Yönetici Sayfası - Etkinlik Detayları Sayfası
+{% endblock %}
+
+{% block icerik_baslik %}
+    Aşağıda Seçili Etkinliğin Detaylarını Bulabilirsiniz
+{% endblock %}
+
+    {% block icerik %}
+     <div class="container">
+
+                <table class="table">
+  <thead class="thead-dark ">
+    <tr>
+      <th scope="col">Etkinlik Alan Bilgisi</th>
+      <th scope="col">Etkinlik Alan İçeriği</th>
+
+    </tr>
+  </thead>
+  <tbody class="table table-bordered table-dark">
+
+    <tr>
+      <th scope="row">Etkinlik İd</th>
+      <td>{{ etkinlik.etkinlik_id}}</td>
+    </tr>
+          <tr>
+      <th scope="row">Etkinlik Kategorisi</th>
+      <td>{{ etkinlik.etkinlik_kategori.kategori_adi}}</td>
+    </tr>
+      <tr>
+      <th scope="row">Etkinlik Başlık</th>
+      <td>{{ etkinlik.etkinlik_adi}}</td>
+    </tr>
+  <tr>
+      <th scope="row">Etkinlik Açıklama</th>
+      <td>{{ etkinlik.etkinlik_aciklama}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Etkinlik Tarihi</th>
+      <td>{{ etkinlik.etkinlik_tarihi.strftime('%d/%m/%Y')}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Etkinlik Son Başvuru Tarihi</th>
+      <td>{{ etkinlik.etkinlik_son_basvuru_tarihi.strftime('%d/%m/%Y') }}</td>
+    </tr>
+   <tr>
+      <th scope="row">Etkinlik Kontenjan Sayısı - Toplam Başvuru Sayısı</th>
+      <td>{{ etkinlik.etkinlik_kontenjan_sayisi }} - {{ basvurular.__len__() }}</td>
+    </tr>
+   <tr>
+      <th scope="row">Etkinlik Resmi 01</th>
+      <td><img src="{{ etkinlik.etkinlik_foto_01  }}" width="200"></td>
+    </tr>
+     <tr>
+      <th scope="row">Etkinlik Resmi 02</th>
+      <td><img src="{{ etkinlik.etkinlik_foto_02}}" width="200"></td>
+    </tr>
+       <tr>
+      <th scope="row">Etkinlik Resmi 03</th>
+      <td><img src="{{ etkinlik.etkinlik_foto_03}}" width="200"></td>
+    </tr>
+     <tr>
+      <th scope="row">Etkinlik Başvuruları Bilgileri</th>
+      <td>
+          {% if basvurular.__len__() >0 %}
+          {% for basvuru in basvurular %}
+              {{ basvuru.basvurupersonel.yonetici_adi_soyadi}}
+              - {{ basvuru.basvurupersonel.yonetici_birim.birim_adi}}
+              - {{ basvuru.basvuru_tarihi.strftime('%d/%m/%Y')}}
+              - <a href="/yonetici_etkinlik_detay/{{etkinlik.etkinlik_id}}/{{basvuru.basvuru_personel_id}}">
+                Başvuruyu İptal Et</a>
+<br>
+              {% endfor %}
+
+
+          {% else %} Henüz Başvuru Yapılmamıştır {% endif %}
+{#          {% if basvuru == True %}#}
+{#          <a href="/personel_etkinlik_detay/{{etkinlik.etkinlik_id }}/{{personel.yonetici_id}}">#}
+{#              Etkinlik Başvur</a>#}
+{#          {% else %}#}
+{#          <a href="/personel_etkinlik_detay/{{etkinlik.etkinlik_id}}/{{personel.yonetici_id}}">#}
+{#              Başvurumu İptal Et</a>#}
+{#          <br>#}
+{#            {% endif %}#}
+      </td>
+    </tr>
+
+
+    </table>
+
+
+</div>
+
+    {% endblock %}
+
+

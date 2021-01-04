@@ -1,0 +1,47 @@
+{% extends "personel.html" %}
+{% block sayfa_baslik %}
+Personel Sayfası Etkinlik Listeleme Sayfası
+{% endblock %}
+{% block icerik_baslik %}
+    Aşağıda Sistemde Kayıtlı Bulunan Açık Etkinliklerin Listesini Bulabilirsiniz
+{% endblock %}
+    {% block icerik %}
+     <div class="container">
+    <div class="alert alert-success" role="alert">
+    Kayıtlı Toplam Etkinlik Sayısı : {{ etkinlikler.__len__() }} <br>
+    </div>
+        <table class="table table-bordered table-dark">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Etkinlik İd</th>
+      <th scope="col">Etkinlik Adı</th>
+       <th scope="col">Etkinlik Resmi</th>
+        <th scope="col">Etkinlik Kategori</th>
+        <th scope="col">Etkinlik Tarihi</th>
+      <th scope="col">Etkinlik Detayları</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for etkinlik in etkinlikler %}
+      <tr>
+      <th scope="row">{{ etkinlik.etkinlik_id }}</th>
+      <td>{{ etkinlik.etkinlik_adi }}</td>
+      <td><img src="{{ etkinlik.etkinlik_foto_01 }}" width="150" height="150"></td>
+           <td>{{ etkinlik.etkinlik_kategori.kategori_adi}}</td>
+           <td>{{ etkinlik.etkinlik_tarihi.strftime('%d/%m/%Y')}}</td>
+      <td><a href= "/personel_etkinlik_detay/{{ etkinlik.etkinlik_id}}" >Etkinlik Detayları</a></td>
+
+    </tr>
+  {% endfor %}
+
+     </tbody>
+</table>
+
+
+</div>
+
+
+
+    {% endblock %}
+
+

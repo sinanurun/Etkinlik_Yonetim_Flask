@@ -1,0 +1,60 @@
+{% extends "yonetici.html" %}
+
+{% block sayfa_baslik %}
+Dilek Detayları Sayfası
+{% endblock %}
+
+{% block icerik_baslik %}
+    Aşağıda Seçili Dileğin Detaylarını Bulabilirsiniz
+{% endblock %}
+
+
+
+
+
+
+
+    {% block icerik %}
+        <div class="container">
+
+                <table class="table">
+  <thead class="thead-dark ">
+    <tr>
+      <th scope="col">Dilek Alan Bilgisi</th>
+      <th scope="col">Dilek Alan İçeriği</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <th scope="row">Dilek İd</th>
+      <td>{{ dilek.dilek_id}}</td>
+    </tr>
+                    <tr>
+      <th scope="row">dilek Başlık</th>
+      <td>{{ dilek.dilek_baslik}}</td>
+    </tr>
+                    <tr>
+      <th scope="row">Dilek Açıklama</th>
+      <td>{{ dilek.dilek_aciklama}}</td>
+    </tr>
+                    <tr>
+      <th scope="row">Dilek Tarihi</th>
+      <td>{{ idilek.dilek_tarihi}}</td>
+    </tr>
+ <tr>
+      <th scope="row">Dilek Yapan Birimi</th>
+      <td>{{ dilek.dilek_personel_id.yonetici_adi_soyadi }}
+      </td>
+    </tr>
+
+
+    </table>
+
+
+</div>
+
+    {% endblock %}
+
+

@@ -1,0 +1,43 @@
+{% extends "personel.html" %}
+
+{% block sayfa_baslik %}
+Personel Sayfası - Dilek Görüntüleme Sayfasındasınız
+{% endblock %}
+
+{% block icerik_baslik %}
+ Dilek Görüntüleme Sayfasındasınız <br>
+
+{% endblock %}
+
+
+{% block icerik %}
+    
+
+        <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Dilek Başlığı</th>
+      <th scope="col">Dilek Yapan</th>
+      <th scope="col">Dilek Açıklaması</th>
+        <th scope="col">Dilek Tarihi</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <th scope="row">{{ dilek.dilek_id}}</th>
+      <td>{{ dilek.dilek_basligi }}</td>
+
+              <td>{{ dilek.dilekpersonel.yonetici_adi_soyadi}}</td>
+        <td>{{ dilek.dilek_aciklama }}</td>
+      <th>{{ dilek.dilek_tarihi.strftime('%d/%m/%Y')}}</th>
+
+    </tr>
+
+    </table>
+
+{% endblock %}
+
+

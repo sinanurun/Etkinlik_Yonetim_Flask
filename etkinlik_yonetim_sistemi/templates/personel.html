@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <title>M.T.A. Çalışan Motivasyonuna Yönelik Etkinlik Yönetim Sistemi</title>
+</head>
+<body class="text-center" background="/static/yuklemeler/arka_plan.jpg">
+<br>
+<div class="alert alert-success" role="alert">
+<div class="container">
+<table class="table" >
+    <tr><td><img src='/static/yuklemeler/ayu_logo.png' width="125" height="125"></td>
+        <td class="align-center align-middle"><h4>Etkinlik Yönetim Sistemine Hoş Geldiniz Sayın <b>
+            {{ personel.yonetici_adi_soyadi.upper() }}</b>
+            <br><br>{% block icerik_baslik %}
+
+    Aşağıdaki Menü Aracılığı ile Yapmak İstediğiniz İşlemi Seçebilirsiniz
+            {% endblock %}</h4></td>
+    <td><img src='/static/yuklemeler/mta_logo.png'  width="125" height="125"></td>
+    </tr>
+</table>
+</div>
+
+</div>
+
+<div class="container">
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/personel_sayfasi">Ana Sayfa <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Etkinlik İş ve İşlemleri
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/personel_etkinlik_listesi">Etkinlik Listesi</a>
+              <a class="dropdown-item" href="/personel_basvurulan_etkinlikler">Başvurulan Etkinlikler</a>
+              <a class="dropdown-item" href="/personel_pasif_etkinlikler">Pasif Etkinlikler</a>
+          </div>
+      </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Duyuru İş ve İşlemleri
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/personel_duyuru_listesi">Duyuru Listesi</a>
+          </div>
+      </li>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dilek İş ve İşlemleri
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/personel_dilek_guncelle_sil">Dilek Listesi</a>
+            <a class="dropdown-item" href="/personel_dilek_ekle">Dilek Ekle</a>
+          </div>
+      </li>
+
+
+        <li class="nav-item">
+        <a class="nav-link" href="/cikis">Çıkış<span class="sr-only"></span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+</div>
+<br>
+<div class="container">
+{% block icerik %}
+{# Personel Etkinlikleri #}
+<div class="container">
+    <div class="alert alert-success" role="alert">
+    Kayıtlı Toplam Etkinlik Sayısı : {{ etkinlikler.__len__() }} <br>
+    </div>
+        <table class="table table-bordered table-dark">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Etkinlik İd</th>
+      <th scope="col">Etkinlik Adı</th>
+       <th scope="col">Etkinlik Resmi</th>
+        <th scope="col">Etkinlik Kategori</th>
+        <th scope="col">Etkinlik Tarihi</th>
+      <th scope="col">Etkinlik Detayları</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for etkinlik in (etkinlikler[::-1] if etkinlikler.__len__() <=10 else etkinlikler[-10::-1]) %}
+      <tr>
+      <th scope="row">{{ etkinlik.etkinlik_id }}</th>
+      <td>{{ etkinlik.etkinlik_adi }}</td>
+      <td><img src="{{ etkinlik.etkinlik_foto_01 }}" width="150" height="150"></td>
+           <td>{{ etkinlik.etkinlik_kategori.kategori_adi}}</td>
+           <td>{{ etkinlik.etkinlik_tarihi.strftime('%d/%m/%Y')}}</td>
+      <td><a href= "/personel_etkinlik_detay/{{ etkinlik.etkinlik_id}}" >Etkinlik Detayları</a></td>
+
+    </tr>
+  {% endfor %}
+
+     </tbody>
+</table>
+
+
+</div>
+{# Personel Duyuruları #}
+ <div class="container">
+
+    <div class="alert alert-success" role="alert">
+    Sistemde Kayıtlı Bulunan Toplam Duyuru Sayısı : {{ duyurular.__len__() }} <br>
+    </div>
+        <table class="table table-bordered table-dark">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Duyuru Başlığı</th>
+      <th scope="col">Duyuruyu Yapan</th>
+      <th scope="col">Duyuru Tarihi</th>
+        <th scope="col">Duyuru Bağlantısı</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for duyuru in (duyurular if duyurular.__len__() <=10 else duyurular[-10:-1]) %}
+    <tr>
+      <th scope="row">{{ duyuru.duyuru_id}}</th>
+      <td>{{ duyuru.duyuru_basligi }}</td>
+
+              <td>{{ duyuru.duyuru_yonetici.yonetici_adi_soyadi}}</td>
+      <th>{{ duyuru.duyuru_tarihi.strftime('%d/%m/%Y')}}</th>
+        <th><a  href="/personel_duyuru_goruntuleme/{{ duyuru.duyuru_id}}">Duyuru Görüntüle</a></th>
+    </tr>
+    {% endfor %}
+    </table>
+</div>
+{# Personel Dilekleri #}
+ <div class="container">
+    <div class="alert alert-success" role="alert">
+    Kayıtlı Toplam Dilek Sayısı : {{ dilekler.__len__() }} <br>
+    </div>
+           <table class="table table-bordered table-dark">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Dilek Başlığı</th>
+      <th scope="col">Dilek Sahibi</th>
+      <th scope="col">Dilek Tarihi</th>
+      <th scope="col">Dilek Görüntüle</th>
+      <th scope="col">Dilek Sil</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for dilek in (dilekler if dilekler.__len__() <=10 else dilekler[-10:-1]) %}
+    <tr>
+      <th scope="row">{{ dilek.dilek_id}}</th>
+              <td>{{ dilek.dilek_basligi }}</td>
+              <td>{{ dilek.dilekpersonel.yonetici_adi_soyadi }}</td>
+        <td>{{ dilek.dilek_tarihi.strftime('%d/%m/%Y')}}</td>
+
+      <th><a href= "/personel_dilek_goruntule/{{dilek.dilek_id }}" >Dilek Görüntüle</a></th>
+      <th><a href="/personel_dilek_guncelle_sil/{{dilek.dilek_id }}" >Dilek Sil</a></th>
+
+    </tr>
+    {% endfor %}
+    </table>
+
+
+</div>
+
+{% endblock %}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ </body>
+</html>

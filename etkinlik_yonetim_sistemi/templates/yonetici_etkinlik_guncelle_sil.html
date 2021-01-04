@@ -1,0 +1,52 @@
+{% extends "yonetici.html" %}
+
+{% block sayfa_baslik %}
+Yönetici Sayfası - Etkinlik Güncelleme ve Silme Sayfası
+{% endblock %}
+
+{% block icerik_baslik %}
+    Aşağıda Sisteminize Kayıtlı Bulunan Etkinlikleri Listesini Bulabilirsiniz
+{% endblock %}
+    {% block icerik %}
+            <div class="container">
+    <div class="alert alert-success" role="alert">
+    Kayıtlı Toplam Etkinlik Sayısı : {{ etkinlikler.__len__() }} <br>
+    </div>
+        <table class="table table-bordered table-dark">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Etkinlik İd</th>
+      <th scope="col">Etkinlik Adı</th>
+       <th scope="col">Etkinlik Resmi</th>
+        <th scope="col">Etkinlik Kategori</th>
+         <th scope="col">Etkinlik Durumu</th>
+        <th scope="col">Etkinlik Tarihi</th>
+        <th scope="col">Detaylar</th>
+      <th scope="col">Güncelle</th>
+        <th scope="col">Sil</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for etkinlik in etkinlikler[::-1] %}
+      <tr>
+      <th scope="row">{{ etkinlik.etkinlik_id }}</th>
+      <td>{{ etkinlik.etkinlik_adi.capitalize() }}</td>
+      <td><img src="{{ etkinlik.etkinlik_foto_01 }}" width="75"></td>
+           <td>{{ etkinlik.etkinlik_kategori.kategori_adi.upper()}}</td>
+          <td>{% if etkinlik.etkinlik_durum == 0 %}Aktif{% else %}Pasif{% endif %}</td>
+           <td>{{ etkinlik.etkinlik_tarihi.strftime('%d/%m/%Y')}}</td>
+      <td><a href= "/yonetici_etkinlik_detay/{{ etkinlik.etkinlik_id}}" >Detaylar</a></td>
+
+          <td><a href= "/yonetici_etkinlik_guncelle/{{ etkinlik.etkinlik_id}}" >Güncelle</a></td>
+      <td><a href= "/yonetici_etkinlik_guncelle_sil/{{ etkinlik.etkinlik_id}}" >Sil</a></td>
+    </tr>
+  {% endfor %}
+
+     </tbody>
+</table>
+
+
+</div>
+    {% endblock %}
+
+

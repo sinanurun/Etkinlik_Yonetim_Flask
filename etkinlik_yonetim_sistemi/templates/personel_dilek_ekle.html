@@ -1,0 +1,42 @@
+{% extends "personel.html" %}
+
+{% block sayfa_baslik %}
+    soyası - Dilek Ekleme Sayfası
+{% endblock %}
+
+{% block icerik_baslik %}
+    Aşağıdaki Formu Doldurarak Sisteme Yeni Dilek Ekleyebilirsiniz
+{% endblock %}
+
+{% block icerik %}
+    <div class="container">
+        {% if mesaj %}
+            <div class="alert alert-success" role="alert">
+                Dilek Ekleme İşleminiz {{ mesaj }} İle Sonuçlanmıştır<br>
+                Yukarıda Bulunan Menü Aracılığı ile Yapmak İstediğiniz İşlemi Seçebilirsiniz
+            </div>
+        {% else %}
+             <form action="personel_dilek_ekle" method="post">
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label>Dilek Başlığı</label>
+            <input type="text" class="form-control" id="inputPassword4" placeholder="Dilek Başlığı" name="dilek_basligi">
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="inputState">Dilek Açıklama</label>
+
+        <textarea class="form-control" rows="3" id="comment" placeholder="Dilek Açıklaması" name="dilek_aciklama"></textarea>
+    </div>
+
+    <div class="form-group col-md-4" >
+  <br>
+      <button type="submit" class="btn btn-primary" >Dilek Ekle</button>
+    </div>
+  </div>
+
+
+</form>
+        {% endif %}
+    </div>
+{% endblock %}

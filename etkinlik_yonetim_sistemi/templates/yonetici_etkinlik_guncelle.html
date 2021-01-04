@@ -1,0 +1,99 @@
+{% extends "yonetici.html" %}
+
+{% block sayfa_baslik %}
+    Yönetici Sayfası - Etkinlik Ekleme Sayfası
+{% endblock %}
+
+{% block icerik_baslik %}
+    Aşağıdaki Formu Doldurarak Etkinlik Güncelleme Yapabilirsiniz
+{% endblock %}
+
+{% block icerik %}
+    <div class="container">
+        {% if mesaj %}
+            <div class="alert alert-success" role="alert">
+                Etkinlik Güncelleme İşleminiz {{ mesaj }} İle Sonuçlanmıştır<br>
+                Yukarıda Bulunan Menü Aracılığı ile Yapmak İstediğiniz İşlemi Seçebilirsiniz
+            </div>
+        {% else %}
+            <form action="/yonetici_etkinlik_guncelle" method="post" enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label>Etkinlik Adı</label>
+                      <input type="text" class="form-control" id="inputEmail4"  name="etkinlik_adi" value="{{ etkinlik.etkinlik_adi }}">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label >Etkinlik Açıklaması</label>
+                        <textarea class="form-control" rows="3"  name="etkinlik_aciklama">{{ etkinlik.etkinlik_aciklama }}</textarea>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label >Etkinlik Kontenjan Sayısı</label>
+                      <input type="text" class="form-control" id="inputPassword4"
+                             name="etkinlik_kontenjan_sayisi" value="{{ etkinlik.etkinlik_kontenjan_sayisi }}">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                         <label for="inputState">Etkinlik Birimleri</label>
+                              <select id="inputState" class="form-control" name="etkinlik_birimleri" multiple>
+                                  {% for birim in birimler %}
+                                    <option value={{ birim.birim_id }}>{{ birim.birim_adi}}</option>
+                                  {% endfor %}
+                              </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                         <label for="inputState">Etkinlik Kategorisi</label>
+                              <select id="inputState" class="form-control" name="etkinlik_kategori_id">
+                                  {% for kategori in kategoriler %}
+                                    <option value={{ kategori.kategori_id }}>{{ kategori.kategori_adi}}</option>
+                                  {% endfor %}
+                              </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label >Etkinlik Tarihi</label>
+                      <input type="text" class="form-control" id="inputPassword4"  name="etkinlik_tarihi" value="{{ etkinlik.etkinlik_tarihi.strftime('%d/%m/%Y') }}">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label >Son Başvuru Tarihi</label>
+                      <input type="textarea" class="form-control" id="inputDate4"  name="etkinlik_son_basvuru_tarihi" value="{{ etkinlik.etkinlik_son_basvuru_tarihi.strftime('%d/%m/%Y') }}">
+                    </div>
+                </div>
+                <div class="form-row">
+                      <div class="form-group col-md-4" >
+                                <label for="inputState">Etkinlik Resmi Ekle</label>
+                          <br>
+                          <img src="{{ etkinlik.etkinlik_foto_01 }}" width="150"><br>
+                                <input type="file"  class="form-control" name="dosya01" placeholder="Resim Seçiniz">
+                      </div>
+                      <div class="form-group col-md-4" >
+                                <label for="inputState">Etkinlik Resmi Ekle -2</label>
+                          <br>
+                          <img src="{{ etkinlik.etkinlik_foto_02 }}" width="150"><br>
+                                <input type="file"  class="form-control" name="dosya02" placeholder="Resim Seçiniz">
+                      </div>
+                      <div class="form-group col-md-4" >
+                                <label for="inputState">Etkinlik Resmi Ekle -3</label>
+                          <br>
+                          <img src="{{ etkinlik.etkinlik_foto_02 }}" width="150"><br>
+                                <input type="file"  class="form-control" name="dosya03" placeholder="Resim Seçiniz">
+                      </div>
+
+                </div>
+              <div class="form-row">
+                  <div class="form-group col-md-3">
+                         <label for="inputState">Etkinlik Durumu</label>
+                              <select id="inputState" class="form-control" name="etkinlik_durum">
+
+                                    <option value=0>Aktif</option>
+                                  <option value=1>Pasif</option>
+                              </select>
+                    </div>
+    <div class="form-group col-md-9">
+  <br><input type="hidden" name="etkinlik_id" value="{{ etkinlik.etkinlik_id }}">
+      <button type="submit" class="btn btn-primary" >Etkinlik Güncelle</button>
+    </div>
+  </div>
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}

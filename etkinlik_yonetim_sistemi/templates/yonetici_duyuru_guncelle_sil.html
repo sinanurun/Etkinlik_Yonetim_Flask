@@ -1,0 +1,45 @@
+{% extends "yonetici.html" %}
+
+{% block sayfa_baslik %}
+Yönetici Sayfası - Duyuru Güncelleme ve Silme Sayfası
+{% endblock %}
+
+{% block icerik_baslik %}
+    Aşağıda Sisteminize Kayıtlı Bulunan Duyuruların Listesini Bulabilirsiniz
+{% endblock %}
+
+    {% block icerik %}
+            <div class="container">
+    <div class="alert alert-success" role="alert">
+    Kayıtlı Toplam Duyuru Sayısı : {{ duyurular.__len__() }} <br>
+    </div>
+           <table class="table table-bordered table-dark">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Duyuru Başlığı</th>
+      <th scope="col">Duyuruyu Yapan</th>
+      <th scope="col">Duyuru Tarihi</th>
+      <th scope="col">Duyuru Güncelle</th>
+      <th scope="col">Duyuru Sil</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for duyuru in duyurular[::-1] %}
+    <tr>
+      <th scope="row">{{ duyuru.duyuru_id}}</th>
+              <td>{{ duyuru.duyuru_basligi }}</td>
+        <td>{{ duyuru.duyuru_yonetici.yonetici_adi_soyadi}}</td>
+      <th>{{ duyuru.duyuru_tarihi.strftime('%d/%m/%Y')}}</th>
+      <th><a href= "/yonetici_duyuru_guncelle/{{duyuru.duyuru_id }}" >Duyuru Güncelle</a></th>
+      <th><a href="/yonetici_duyuru_sil/{{duyuru.duyuru_id }}" >Duyuru Sil</a></th>
+
+    </tr>
+    {% endfor %}
+    </table>
+
+
+</div>
+    {% endblock %}
+
+

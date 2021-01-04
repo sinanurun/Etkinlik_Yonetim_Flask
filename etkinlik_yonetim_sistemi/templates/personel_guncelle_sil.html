@@ -1,0 +1,62 @@
+{% extends "yonetici.html" %}
+
+{% block sayfa_baslik %}
+Yönetici Sayfası - Personel Güncelleme ve Silme Sayfası
+{% endblock %}
+
+{% block icerik_baslik %}
+ Personel Güncelleme ve Silme Sayfasındasınız {{ yonetici.yonetici_adi_soyadi.upper() }}<br>
+    Aşağıda Sizin Sistemde bulunan Personellerin Listesini Bulabilirsiniz
+{% endblock %}
+
+
+
+
+
+
+
+    {% block icerik %}
+        <div class="container">
+    <div class="alert alert-dark" role="alert">
+    Size Tanımlı Toplam Personel Sayısı : {{ personeller.__len__() }} <br>
+    </div>
+        <table class="table table-bordered table-dark">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Personel İd</th>
+      <th scope="col">Personel Adı Soyadı</th>
+      <th scope="col">Personel Email</th>
+        <th scope="col">Personel Telefon</th>
+      <th scope="col">Personel Durum</th>
+      <th scope="col">Personel Güncelle</th>
+      <th scope="col">Personel Sil</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for personel in personeller %}
+    <tr>
+      <th scope="row">{{personel.yonetici_id}}</th>
+      <td>{{ personel.yonetici_adi_soyadi}}</td>
+      <td>{{ personel.yonetici_email}}</td>
+      <td>{{ personel.yonetici_tel}}</td>
+
+
+            {% if personel.yonetici_durum == 0 %}
+      <td>Yönetici</td>
+        {% else %}
+        <td>Personel</td>
+        {% endif %}
+      <th><a href= "/personel_guncelle/{{personel.yonetici_id}}" >Personel Güncelle</a></th>
+      <th>{% if personel.yonetici_id != 1%}
+      <a href="/personel_sil/{{personel.yonetici_id}}" >Personel Sil</a>
+      {% endif %} </th>
+
+    </tr>
+    {% endfor %}
+    </table>
+
+        </div>
+
+    {% endblock %}
+
+

@@ -1,0 +1,84 @@
+{% extends "yonetici.html" %}
+
+{% block sayfa_baslik %}
+    Yönetici Sayfası - Etkinlik Ekleme Sayfası
+{% endblock %}
+
+{% block icerik_baslik %}
+    Aşağıdaki Formu Doldurarak Sisteme Yeni Etkinlik Ekleyebilirsiniz
+{% endblock %}
+
+{% block icerik %}
+    <div class="container" >
+        {% if mesaj %}
+            <div class="alert alert-success" role="alert">
+                Etkinlik Ekleme İşleminiz {{ mesaj }} İle Sonuçlanmıştır<br>
+                Yukarıda Bulunan Menü Aracılığı ile Yapmak İstediğiniz İşlemi Seçebilirsiniz
+            </div>
+        {% else %}
+            <form action="yonetici_etkinlik_ekle" method="post" enctype="multipart/form-data" >
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label>Etkinlik Adı</label>
+                      <input type="text" class="form-control" id="inputEmail4"  name="etkinlik_adi">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label >Etkinlik Açıklaması</label>
+                        <textarea class="form-control" rows="3"  name="etkinlik_aciklama"></textarea>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label >Etkinlik Kontenjan Sayısı</label>
+                      <input type="text" class="form-control" id="inputPassword4"  name="etkinlik_kontenjan_sayisi">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                         <label for="inputState">Etkinlik Birimleri</label>
+                              <select id="inputState" class="form-control" name="etkinlik_birimleri" multiple>
+                                  {% for birim in birimler %}
+                                    <option value={{ birim.birim_id }}>{{ birim.birim_adi}}</option>
+                                  {% endfor %}
+                              </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                         <label for="inputState">Etkinlik Kategorisi</label>
+                              <select id="inputState" class="form-control" name="etkinlik_kategori_id">
+                                  {% for kategori in kategoriler %}
+                                    <option value={{ kategori.kategori_id }}>{{ kategori.kategori_adi}}</option>
+                                  {% endfor %}
+                              </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label >Etkinlik Tarihi gg/aa/yyyy</label>
+                      <input type="text" class="form-control" id="inputPassword4"  name="etkinlik_tarihi">
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label >Son Başvuru Tarihi gg/aa/yyyy</label>
+                      <input type="textarea" class="form-control" id="inputDate4"  name="etkinlik_son_basvuru_tarihi">
+                    </div>
+                </div>
+                <div class="form-row">
+                      <div class="form-group col-md-4" >
+                                <label for="inputState">Etkinlik Resmi Ekle</label>
+                                <input type="file"  class="form-control" name="dosya01" placeholder="Resim Seçiniz">
+                      </div>
+                      <div class="form-group col-md-4" >
+                                <label for="inputState">Etkinlik Resmi Ekle -2</label>
+                                <input type="file"  class="form-control" name="dosya02" placeholder="Resim Seçiniz">
+                      </div>
+                      <div class="form-group col-md-4" >
+                                <label for="inputState">Etkinlik Resmi Ekle -3</label>
+                                <input type="file"  class="form-control" name="dosya03" placeholder="Resim Seçiniz">
+                      </div>
+
+                </div>
+              <div class="form-row">
+    <div class="form-group col-md-12">
+  <br>
+      <button type="submit" class="btn btn-primary" >Etkinlik Ekle</button>
+    </div>
+  </div>
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}

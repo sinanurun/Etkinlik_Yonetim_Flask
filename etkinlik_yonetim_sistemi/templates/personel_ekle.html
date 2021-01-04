@@ -1,0 +1,76 @@
+{% extends "yonetici.html" %}
+
+{% block sayfa_baslik %}
+Yönetici Sayfası - PErsonelEkleme Sayfası
+{% endblock %}
+
+{% block icerik_baslik %}
+     Aşağıdaki Formu Doldurarak Yeni Personel Ekleyebilirsiniz
+{% endblock %}
+
+
+{% block icerik %}
+    <div class="container">
+    {% if mesaj %}
+<br>
+    <div class="alert alert-success" role="alert">
+
+ Personel Ekleme İşleminiz {{ mesaj }} İle Sonuçlanmıştır<br>
+    Yukarıda Bulunan Menü Aracılığı ile Yapmak İstediğiniz İşlemi Seçebilirsiniz
+
+
+</div>
+     {% else %}
+        <form action="personel_ekle" method="post">
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label >Personel Adı Soyadı</label>
+      <input type="text" class="form-control" id="inputEmail4" placeholder="Personel Adı Soyadı" name="yonetici_adi_soyadi">
+    </div>
+    <div class="form-group col-md-4">
+      <label >Personel TC No</label>
+      <input type="text" class="form-control" id="inputPassword4" placeholder="Personel TC No" name="yonetici_tc">
+    </div>
+          <div class="form-group col-md-4">
+      <label >Personel Şifre</label>
+      <input type="text" class="form-control" id="inputPassword4" placeholder="Şife" name="yonetici_sifre">
+    </div>
+
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label >Telefon</label>
+      <input type="text" class="form-control" id="inputEmail4" placeholder="Telefon" name="yonetici_tel">
+    </div>
+      <div class="form-group col-md-4">
+      <label >E mail</label>
+      <input type="text" class="form-control" id="inputPassword4" placeholder="E Mail" name="yonetici_email">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">Personel Birimi</label>
+      <select id="inputState" class="form-control" name="birim_id">
+          {% for birim in birimler %}
+        <option selected value={{ birim.birim_id }}>{{ birim.birim_adi }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+  </div>
+
+  <div class="form-row">
+
+    <div class="form-group col-md-12" >
+  <br>
+      <button type="submit" class="btn btn-primary" >Personel Ekle</button>
+    </div>
+  </div>
+
+
+
+</form>
+
+    {% endif %}
+</div>
+
+
+{% endblock %}

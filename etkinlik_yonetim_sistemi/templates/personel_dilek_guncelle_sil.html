@@ -1,0 +1,52 @@
+{% extends "personel.html" %}
+
+{% block sayfa_baslik %}
+Personel Sayfası - Dilek Güncelleme ve Silme Sayfası
+{% endblock %}
+
+{% block icerik_baslik %}
+    Aşağıda Sisteminize Kayıtlı Bulunan Dilek Listesini Bulabilirsiniz
+{% endblock %}
+
+
+
+
+
+
+
+    {% block icerik %}
+            <div class="container">
+    <div class="alert alert-success" role="alert">
+    Kayıtlı Toplam Dilek Sayısı : {{ dilekler.__len__() }} <br>
+    </div>
+           <table class="table table-bordered table-dark">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Dilek Başlığı</th>
+      <th scope="col">Dilek Sahibi</th>
+      <th scope="col">Dilek Tarihi</th>
+      <th scope="col">Dilek Görüntüle</th>
+      <th scope="col">Dilek Sil</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for dilek in dilekler %}
+    <tr>
+      <th scope="row">{{ dilek.dilek_id}}</th>
+              <td>{{ dilek.dilek_basligi }}</td>
+              <td>{{ dilek.dilekpersonel.yonetici_adi_soyadi }}</td>
+        <td>{{ dilek.dilek_tarihi.strftime('%d/%m/%Y')}}</td>
+
+      <th><a href= "/personel_dilek_goruntule/{{dilek.dilek_id }}" >Dilek Görüntüle</a></th>
+      <th><a href="/personel_dilek_guncelle_sil/{{dilek.dilek_id }}" >Dilek Sil</a></th>
+
+    </tr>
+    {% endfor %}
+    </table>
+
+
+</div>
+    {% endblock %}
+
+

@@ -1,0 +1,80 @@
+{% extends "yonetici.html" %}
+
+{% block sayfa_baslik %}
+Yönetici Sayfası - Personel Güncelleme Sayfası
+{% endblock %}
+
+{% block icerik_baslik %}
+    Aşağıdaki Formu Doldurarak Seçili Personeli Güncelleyebilirsiniz
+{% endblock %}
+
+
+{% block icerik %}
+
+    {% if mesaj %}
+
+    <div class="alert alert-success" role="alert">
+
+Personel Güncelleme İşleminiz {{ mesaj }} İle Sonuçlanmıştır<br>
+ Yukarıda Bulunan Menü Aracılığı ile Yapmak İstediğiniz İşlemi Seçebilirsiniz
+
+
+</div>
+     {% else %}
+
+
+        <form action="/personel_guncelle" method="post">
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label>Personel Adı Soyadı</label>
+      <input type="text" class="form-control" id="inputEmail4"  name="yonetici_adi_soyadi" value="{{ personel.yonetici_adi_soyadi }}">
+    </div>
+    <div class="form-group col-md-4">
+      <label >Personel TC No</label>
+      <input type="text" class="form-control" id="inputPassword4" placeholder="Personel TC No" name="yonetici_tc" value="{{ personel.yonetici_tc }}">
+    </div>
+          <div class="form-group col-md-4">
+      <label >Personel Şifre</label>
+      <input type="text" class="form-control" id="inputPassword4" placeholder="Şifre" name="yonetici_sifre" value="{{ personel.yonetici_sifre }}">
+    </div>
+
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label >Telefon</label>
+      <input type="text" class="form-control" id="inputEmail4" placeholder="Telefon" name="yonetici_tel" value="{{ personel.yonetici_tel }}">
+    </div>
+         <div class="form-group col-md-4">
+      <label >E mail</label>
+      <input type="text" class="form-control" id="inputPassword4" placeholder="E Mail" name="yonetici_email" value="{{ personel.yonetici_email }}">
+    </div>
+      <div class="form-group col-md-4">
+      <label >Personel Durum</label>
+
+      <select id="inputState" class="form-control" name="birim_id">
+          {% for birim in birimler %}
+        <option {% if birim.birim_id== personel.birim_id %} selected {% endif %} value="{{ birim.birim_id }}">{{ birim.birim_adi }}</option>
+{% endfor %}
+      </select> </div>
+  </div>
+
+  <div class="form-row">
+
+
+    <div class="form-group col-md-12" >
+  <br>
+        <input type="hidden" name="yonetici_id" value={{ personel.yonetici_id }}>
+      <button type="submit" class="btn btn-primary" >Personel Güncelle</button>
+    </div>
+  </div>
+
+
+
+</form>
+
+
+
+    {% endif %}
+{% endblock %}
+
+

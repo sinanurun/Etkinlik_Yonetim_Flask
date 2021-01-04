@@ -1,0 +1,63 @@
+{% extends "yonetici.html" %}
+
+{% block sayfa_baslik %}
+    Yönetici Sayfası - Yorum Güncelleme Sayfası
+{% endblock %}
+
+{% block icerik_baslik %}
+    Yorum Güncelleme Sayfasındasınız Sayın : {{ yonetici.yonetici_adi_soyadi.upper() }}<br>
+    Aşağıdaki Formu Doldurarak Yorum Güncelleme Yapabilirsiniz
+{% endblock %}
+
+{% block icerik %}
+    <div class="container">
+        {% if mesaj %}
+            <div class="alert alert-success" role="alert">
+                Yorum Güncelleme İşleminiz {{ mesaj }} İle Sonuçlanmıştır<br>
+                Yukarıda Bulunan Menü Aracılığı ile Yapmak İstediğiniz İşlemi Seçebilirsiniz
+            </div>
+        {% else %}
+            <form action="/yonetici_yorum_guncelle" method="post">
+  <div class="form-row">
+
+    <div class="form-group col-md-8">
+      <label>Yorum Yapan Adı</label>
+        <input type="text" class="form-control" id="inputPassword4"  value={{ yorum.yorum_yapan_adi }} name="yorum_yapan_adi">
+    </div>
+
+    <div class="form-group col-md-4">
+      <label >E-Posta</label>
+      <input type="text" class="form-control" id="inputPassword4"  name="yorum_yapan_eposta" value={{ yorum.yorum_yapan_eposta }} >
+    </div>
+
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputState">Yorum Açıklama</label>
+
+        <textarea class="form-control" rows="3" id="comment"  name="yorum_aciklama">{{ yorum.yorum_aciklama }}</textarea>
+    </div>
+<div class="form-group col-md-4">
+                         <label for="inputState">Yorum Durum</label>
+                              <select id="inputState" class="form-control" name="yorum_durum">
+                                  <option value=0>Yayında</option>
+                                    <option value=1>Askıda</option>
+                                        <option value=2>Onay Bekliyor</option>
+                              </select>
+</div>
+    <div class="form-group col-md-4" >
+  <br>
+        <input type="hidden" value={{ yorum.yorum_id }} name="yorum_id">
+      <button type="submit" class="btn btn-primary" >Yorum Güncelle</button>
+    </div>
+
+
+
+  </div>
+
+
+</form>
+        {% endif %}
+    </div>
+{% endblock %}
